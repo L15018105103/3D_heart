@@ -1,0 +1,79 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: #000;
+}
+#heart{
+    position: relative;
+    width: 200px;
+    height: 320px;
+    margin: 150px auto;
+    /*css3自定义动画：名称、时间、匀速、无限重复*/
+    animation: mov 10s linear infinite;
+    transform-style: preserve-3d;
+}
+@keyframes mov {
+    from{transform: rotateY(0deg) rotateX(0deg)}
+    to{transform: rotateY(360deg) rotateX(360deg)}
+}
+.heart{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 320px;
+    border: 2px solid red;
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 50%;
+    /*斜杠前面是水平半径 斜杠后面是竖直半径
+    都是顺时针（左上、右上、右下、左下）*/
+    /*border-radius: 50% 40% 30% 10%/10% 30% 40% 50%;*/
+    border-radius: 50% 50% 0/40% 50% 0;
+    /*transform: rotate(45deg);*/
+}
+.cube{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transform: translateX(50px) translateY(106px) translateZ(50px);
+}
+.cube div{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+}
+.cube div:nth-child(1){/*结构选择器，选择所有子类元素里的第一个*/
+    top: -100px;
+    /*transform-origin: 50% 50% 0;*//*旋转基点，默认值为：50% 50% 0
+    即顺序的X、Y、Z*/
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+}
+.cube div:nth-child(2){
+    top: 100px;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+.cube div:nth-child(3){
+    left: -100px;
+    transform-origin: right;
+    transform: rotateY(-90deg);
+}
+.cube div:nth-child(4){
+    left: 100px;
+    transform-origin: left;
+    transform: rotateY(90deg);/*围绕Y轴旋转*/
+}
+.cube div:nth-child(6){
+    transform: translateZ(-100px);/*围绕Z轴平移*/
+}
+.cube div img{
+    width: 100px;
+    height: 100px;
+}
